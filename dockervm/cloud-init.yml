@@ -1,12 +1,6 @@
-#cloud-config
-#usual config goes here
-
+#cloud-config, install docker, update, add user
 runcmd:
   - curl -fsSL https://get.docker.com -o get-docker.sh; sh get-docker.sh
-  - sudo apt update && sudo apt upgrade  
-
-# Add default auto created user to docker group
-system_info:
-    default_user:
-        groups: [docker]
+  - sudo apt update && apt upgrade  
+  - sudo usermod -aG docker $USER
 
